@@ -1,6 +1,6 @@
 //import "./card-widget.css";
-import moonAlgorithm from "./moon-algoritm";
-import checkPaySys from "./check-pay-sys";
+import moonAlgorithm from './moon-algoritm';
+import checkPaySys from './check-pay-sys';
 
 export default class CardWidget {
   constructor(element, cardCollection) {
@@ -40,15 +40,15 @@ export default class CardWidget {
   bindToDOM() {
     this.element.innerHTML = this.markup;
 
-    this.cardList = this.element.querySelector(".card-list");
+    this.cardList = this.element.querySelector('.card-list');
     this.connectCardList();
     this.deactivatedCards = [];
-    this.form = this.element.querySelector(".form");
-    this.input = this.form.querySelector(".input");
-    this.btn = this.form.querySelector(".btn");
+    this.form = this.element.querySelector('.form');
+    this.input = this.form.querySelector('.input');
+    this.btn = this.form.querySelector('.btn');
 
-    this.form.addEventListener("submit", this.onBtnClick);
-    this.form.addEventListener("input", this.checkActivited);
+    this.form.addEventListener('submit', this.onBtnClick);
+    this.form.addEventListener('input', this.checkActivited);
   }
 
   onBtnClick(e) {
@@ -57,7 +57,7 @@ export default class CardWidget {
     const value = this.input.value.trim();
 
     if (!this.validate(value)) {
-      this.showError("Ошибка");
+      this.showError('Ошибка');
       return;
     }
     if (moonAlgorithm(value)) {
@@ -70,8 +70,8 @@ export default class CardWidget {
     this.controlCardList = [];
     [...this.cardList.children].forEach((el) => {
       const sysItem = {
-        image: el.querySelector(".image"),
-        paySys: el.querySelector(".image").dataset.sys,
+        image: el.querySelector('.image'),
+        paySys: el.querySelector('.image').dataset.sys,
       };
       this.controlCardList.push(sysItem);
     });
@@ -89,7 +89,7 @@ export default class CardWidget {
 
   deactivated() {
     this.deactivatedCards.forEach((el) =>
-      el.image.classList.remove("deactive")
+      el.image.classList.remove('deactive')
     );
     this.deactivatedCards = [];
   }
@@ -100,7 +100,7 @@ export default class CardWidget {
     );
     this.controlCardList.forEach((el) => {
       if (el.paySys !== paySys) {
-        el.image.classList.add("deactive");
+        el.image.classList.add('deactive');
         this.deactivatedCards.push(el);
       }
     });
@@ -112,23 +112,23 @@ export default class CardWidget {
       this.popUp = popUp;
       this.element.append(this.popUp);
     } else {
-      this.popUp.classList.remove("disable");
+      this.popUp.classList.remove('disable');
     }
   }
 
   createPopUp(arg) {
-    const popUpWrapper = document.createElement("div");
-    popUpWrapper.classList.add("popup-wrapper");
+    const popUpWrapper = document.createElement('div');
+    popUpWrapper.classList.add('popup-wrapper');
 
-    const closeImg = document.createElement("span");
-    closeImg.classList.add("close");
+    const closeImg = document.createElement('span');
+    closeImg.classList.add('close');
     closeImg.textContent = `X`;
-    closeImg.addEventListener("click", this.closePopUp);
+    closeImg.addEventListener('click', this.closePopUp);
 
-    const popUpContainer = document.createElement("div");
-    popUpContainer.classList.add("popup");
+    const popUpContainer = document.createElement('div');
+    popUpContainer.classList.add('popup');
 
-    const message = document.createElement("span");
+    const message = document.createElement('span');
     message.textContent = arg;
 
     popUpContainer.append(closeImg);
@@ -139,7 +139,7 @@ export default class CardWidget {
   }
 
   closePopUp() {
-    this.popUp.classList.add("disable");
+    this.popUp.classList.add('disable');
   }
 
   validate(value) {

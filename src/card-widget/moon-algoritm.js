@@ -1,9 +1,9 @@
 export default function moonAlgorithm(setValue) {
   let ch = 0;
-  const num = String(setValue).replace(/\D/g, "");
+  const num = String(setValue).replace(/\D/g, '');
   const isOdd = num.length % 2 !== 0;
 
-  if ("" === num) return false;
+  if ('' === num) return false;
 
   for (let i = 0; i < num.length; i++) {
     let n = parseInt(num[i], 10);
