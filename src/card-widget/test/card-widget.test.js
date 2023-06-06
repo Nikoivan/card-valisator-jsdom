@@ -1,23 +1,41 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import CardWidget from "../card-widget";
 import CardCollection from "../compopents/CardCollection";
 
-test("check card widget by correct card number", () => {
-  document.body.innerHTML = `<div class="wrapper"></div>`;
+const paySysTestList = [
+  [4716468925085991, "visa"],
+  [5548138161860800, "master-card"],
+  [343557931672302, "amex"],
+  [6011950476602289, "discover"],
+  [3530967404972849, "jcb"],
+  [36876965666598, "diner"],
+  [2200020225544867, "mir"],
+];
 
-  const wrapper = document.querySelector(".wrapper");
-  const cardWidget = new CardWidget(wrapper, CardCollection);
+test.each(paySysTestList)(
+  "testing number of card %q and expect result %w",
+  (numberOfCard, paySys) => {
+    document.body.innerHTML = `<div class="wrapper"></div>`;
 
-  cardWidget.bindToDOM();
+    const wrapper = document.querySelector(".wrapper");
+    const cardWidget = new CardWidget(wrapper, CardCollection);
 
-  const form = wrapper.querySelector(".form");
-  const input = form.querySelector(".input");
-  const btn = form.querySelector(".btn");
+    cardWidget.bindToDOM();
 
-  input.value = "371449635398431";
-  btn.click();
+    const form = wrapper.querySelector(".form");
+    const input = form.querySelector(".input");
+    const btn = form.querySelector(".btn");
 
-  let cardItems = [...wrapper.querySelector(".card-list").children];
-  cardItems = cardItems.filter((el) => el.classList.contains("deactive"));
+    input.value = numberOfCard;
+    btn.click();
 
-  expect(cardItems.length).toBe(6);
-});
+    const result = [...wrapper.querySelectorAll(".image")].find(
+      (el) => !el.classList.contains("deactive")
+    );
+
+    expect(result.dataset.sys).toBe(paySys);
+  }
+);
