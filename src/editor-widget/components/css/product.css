@@ -1,0 +1,38 @@
+.products-controller {
+    padding: 10px;
+}
+
+.products-list {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.products-list-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-item {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-item-wrapper {
+    min-width: 70px;
+    
+}
+
+.edit {
+    width: 1rem;
+    margin-right: 5px;
+}
+
+.delete {
+    width: 25px;
+}
+
+.edit, .delete:hover {
+    cursor: pointer;
+}

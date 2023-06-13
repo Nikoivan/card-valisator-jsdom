@@ -1,0 +1,36 @@
+.form-widget {
+    position: absolute;
+    z-index: 2;
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-label{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.item-input {
+    margin-top: 5px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    height: 25px;
+}
+
+.btn-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.btn {
+    margin-left: 15px;
+    width: 100px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 15px;
+}

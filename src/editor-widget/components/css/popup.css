@@ -1,0 +1,14 @@
+.popup {
+    margin: 0 auto;
+    padding: 1rem;
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    width: 400px;
+    
+}
+
+.onBack {
+    position: relative;
+    z-index: 1;
+}

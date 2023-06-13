@@ -1,4 +1,4 @@
-name: Task credit card validator with jsdom
+name: Task editor-list
 
 on: [push, pull_request]
 
